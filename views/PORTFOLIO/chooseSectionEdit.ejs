@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <%- include ('navbarPort1.ejs')%>
+        <h2 align="center">KongRuksiam Studio</h2>
+        <%- messages() %>
+        <% if(user) {%>
+        <h3><%= user.name %></h3>
+        <h3><%= user.email %></h3>
+        <% } %>
+
+
+
+        <div class="container">
+            <h1 style="text-align: center;">Project name : <%= chooseSection[0].projectName%></h1>
+            <!-- <div class="row">
+
+                <% if(locals.chooseSection[0].sectionPort){   %>
+                <% Object.values(chooseSection).forEach(function(portfolio){ %>
+
+                <% Object.values(portfolio.sectionPort ).forEach(function(portfolio3){ %>
+
+                <%= portfolio3%>
+
+
+                <% if(portfolio3 == "section3"){   %>
+                <div class="col">
+                    <% if(chooseSection[0].userInformation == null ){ %>
+                    ยังไม่มีข้อมูล
+                    <%  } %>
+                    <a href="http://localhost:3000/portfolio/addportproject/<%= portfolio.projectName %>"
+                        class="btn btn-dark btn-lg" style="text-align: center; margin-top: 1%;" role="button">Add Data
+                        ยังไม่ทำ
+                    </a>
+                </div>
+                <hr>
+                <%   }%>
+                <% if(portfolio3 == "section1"){   %>
+                <div class="col">
+                    <% if(chooseSection[0].introduceInformation == null ){ %>
+                    ยังไม่มีข้อมูล
+                    <%  } %>
+                    <a href="http://localhost:3000/portfolio/addInputIntroduce/<%= portfolio.projectName %>"
+                        class="btn btn-dark btn-lg" style="text-align: center; margin-top: 1%;" role="button">Add Data
+                        Section1 <h1>เเก้ไข Section เเนะนำตัว</h1>
+                    </a>
+
+                </div>
+                <hr>
+                <%   }%>
+                <% if(portfolio3 == "section2"){   %>
+                <div class="col">
+                    <% if(chooseSection[0].introduceInformation == null ){ %>
+                    ยังไม่มีข้อมูล
+                    <%  } %>
+                    <a href="http://localhost:3000/portfolio/addportproject/<%= portfolio.projectName %>"
+                        class="btn btn-dark btn-lg" style="text-align: center; margin-top: 1%;" role="button">Add Data
+                        Section2 <h1>เเก้ไข Section ข้อมูลผุ้ใช้</h1>
+                    </a>
+                </div>
+                <hr>
+                <%   }%>
+
+                <% if(portfolio3 == "section4"){   %>
+                <div class="col">
+                    <% if(chooseSection[0].goalInformation == null ){ %>
+                    ยังไม่มีข้อมูล
+                    <%  } %>
+                    <a href="http://localhost:3000/portfolio/addInputGoal/<%= portfolio.projectName %>"
+                        class="btn btn-dark btn-lg" style="text-align: center; margin-top: 1%;" role="button">Add Data
+                        Section2 <h1>เเก้ไข Section ข้อมูลผุ้ใช้</h1>
+                    </a>
+                </div>
+                <hr>
+                <%   }%>
+
+
+                <% }) %>
+                <% }) %>
+                <%   }%>
+
+
+
+            </div> -->
+
+            <!-- ------------------------- -->
+
+<div class="col">
+            <div class="row">
+
+                <% if(locals.chooseSection[0].sectionPort){   %>
+                <% Object.values(chooseSection).forEach(function(portfolio){ %>
+                <% Object.values(portfolio.sectionPort ).forEach(function(portfolio3){ %>
+
+                    <div class="card" style="width: 16rem;margin-bottom: 20px;">
+                        <a href="http://localhost:3000/portfolio/<%= portfolio3%>/<%= portfolio.projectName %>">
+                        <img src="http://localhost:3000/images/logo.png" class="card-img-top" alt="..."  >
+                    </a>
+                        <div class="card-body"   
+                        <% if((portfolio.addInputIntroduce && portfolio3 == "addInputIntroduce")|| (portfolio.addInputInformation && portfolio3 == "addInputInformation")||(portfolio.addInputGoal && portfolio3 == "addInputGoal")){ %>
+                            style="background-color: aquamarine;">
+                             <%    }else  {%> 
+                                style="background-color: brown;">
+                            <%    } %>
+                
+                           
+                          <h5 class="card-title">
+                              
+                            <% if(portfolio3== "addInputIntroduce"){ %>
+                                เเก้ไข Section เเนะนำตัว
+                            <% } %>
+                    <!-- --------------------- -->
+                            <%  if(portfolio3 == "addInputInformation"){ %>
+                                เเก้ไข Section ข้อมูลผุ้ใช้
+                            <%    }%>
+                               <!-- --------------------- -->
+                            <% if(portfolio3 == "section3"){%>
+                                ยังไม่ทำ
+                            <%      }%>
+                               <!-- --------------------- -->
+                            <%   if(portfolio3 == "addInputGoal"){ %>
+                                goal
+                            <%     }%>
+
+                          </h5>
+
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <a href="http://localhost:3000/portfolio/deleteSection/<%= portfolio.projectName %>/<%= portfolio3 %>" class="btn btn-primary">
+                            Delete section</a>
+                        </div>
+                      </div>
+                <hr>
+
+
+
+                <% }) %>
+                <% }) %>
+                <%   }%>
+
+
+
+            </div>
+
+        </div>
+
+
+            
+
+        </div>
+
+
+
+        <a href="/"
+            class="btn btn-primary btn-lg"
+            style="text-align: center; margin-top: 1%;" role="button">กลับหน้าหลัก
+      </a>
+      <a href="/portfolio/showinformation/<%= user._id%>/<%= chooseSection[0].projectName%>"
+      class="btn btn-primary btn-lg"
+      style="text-align: center; margin-top: 1%;" role="button">ดูผลPort
+</a>
+    </div>
+
+</body>
+
+</html>

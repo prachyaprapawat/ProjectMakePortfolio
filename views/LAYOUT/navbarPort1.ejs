@@ -1,0 +1,50 @@
+<div class="container">
+
+    <nav class="container navbar navbar-expand-lg navbar-light fixed-top "
+        style="background-color: rgba(255, 255, 255, 0.884);">
+        <a class="navbar-brand" href="http://localhost:3000"><img src="http://localhost:3000/images/logo.png" style="width: 100px;height: auto;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <% if(locals.user){ %>
+
+
+                <li class="nav-item" style="margin-right: 20%;">
+                    <a href="#" class="nav-link"> <img src="http://localhost:3000/images/user.svg" style="width: 30px;height: auto;"> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link"> <img src="http://localhost:3000/images/logout.svg" style="width: 30px;height: auto;">
+                    </a>
+                </li>
+
+
+
+
+
+                <% } %>
+
+                <% if(!locals.user){ %>
+                <li class="nav-item">
+                    <a href="/register" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">Login</a>
+                </li>
+
+
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+</div>

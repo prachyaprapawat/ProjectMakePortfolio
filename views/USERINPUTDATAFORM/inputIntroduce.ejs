@@ -1,0 +1,207 @@
+<html>
+
+<head>
+    <title>
+        ADD PROJECT
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://kit.fontawesome.com/9cdefafb29.js" crossorigin="anonymous"></script>
+    <script async src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script async src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:3000/stylesheets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="container navbar navbar-expand-lg navbar-light fixed-top"
+            style="background-color: rgba(255, 255, 255, 0.884);">
+            <a class="navbar-brand" href="/"><img src="http://localhost:3000/images/logo.png"
+                    style="width: 100px;height: auto;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+
+
+
+
+
+    <div id="app1">
+        <section id="page-2" style="font-size: 0.9em;">
+            <div class="container">
+                <h1 style="text-align: center;"><b>นายปรัชญา ประภาวัต(แปง)</b></h1>
+                <div class="row ">
+                    <div class="col">
+
+                        <h3 class="headcolor">#INFORMATION</h3>
+
+
+
+
+
+
+
+                        <!-- 
+                        <section>
+                            <div style="margin-top: 15%;margin-bottom: 16%; font-size: 3rem;" id="page-1">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="home_right_img">
+                                                <img class="border_circle" src="images/picture.webp" alt=""
+                        style="width: 350px;height: 350px;">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div style="margin-top: 10%;">
+                        <div style="margin-left: 10%;">
+                            <h3>HELL0
+                            </h3>
+                            <input v-model="introduceData.hello">
+                            <input v-model="introduceData.introduceName">
+                            <input v-model="introduceData.institution">
+                            <h1>I AM PRACHYA PRAPAWAT</h1>
+                            <h5>King Mongkut's Institute of Technology Ladkrabang
+                            </h5>
+                            <div>
+                                <a href="https://drive.google.com/file/d/1RQCVqlpcbm3djx50ckuBNYblK850XTRw/view?usp=sharing"
+                                    class="btn btn-primary btn-lg" style="text-align: center; margin-top: 1%;"
+                                    role="button">CV
+                                </a>
+                                <a href="https://drive.google.com/file/d/15GuboYQVfzMgD1dBb9vXuTnZKFVIc-sb/view?usp=sharing"
+                                    class="btn btn-dark btn-lg" style="text-align: center; margin-top: 1%;"
+                                    role="button">TRANSCRIPT
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    </div>
+    </section>
+
+  -->
+
+                        <form action="http://localhost:3000/portfolio/addInputIntroduce" method="POST" id="form"
+                            enctype="multipart/form-data">
+
+                            <input type="text" id="hello" name="hello">
+                            <input type="text" id="introduceName" name="introduceName">
+                            <input type="text" id="institution" name="institution">
+                            <input type="hidden" id="projectName" name="projectName" value="<%= projectName%>">
+                            <input type="hidden" id="userId" name="userId" value="<%= user._id%>">
+                            <div class="custom-file mt-3 mb-4 form-group">
+
+                                <input type="file" class="custom-file-input" name="images1" id="images1" v-model="image"
+                                    onchange="updateList()" multiple>
+                                <label class="custom-file-label" for="customFile">เลือกภาพที่ต้องการอัพโหลด
+                                    (เลือกได้หลายภาพ)</label>
+                            </div>
+
+
+                            <button onclick="submitForm()">Submit all</button>
+                        </form>
+
+
+                    </div>
+                </div>
+                <%= user._id%>
+        </section>
+
+
+
+    </div>
+
+
+
+
+
+    <script async src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js "></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
+    <script>
+
+        function myFunction() {
+            document.getElementById("form").submit();
+        }
+
+        var app = new Vue({
+            el: "#app1",
+            data: {
+                image: "",
+                introduceData: {
+                    hello: '',
+                    introduceName: "",
+                    institution: ""
+
+                },
+
+
+            },
+            methods: {
+                addUser() {
+
+                    this.submitting = true;
+                    axios.post('/portfolio/addInputIntroduce', {
+
+                        introduceInformation: this.introduceData.introduceData,
+                        hello: this.introduceData.hello,
+                        introduceName: this.introduceData.introduceName,
+                        institution: this.introduceData.institution,
+                        image: this.image,
+                        userId: "<%= user._id%>",
+                        projectName: "<%= projectName%>"
+                    }, {
+                        headers: {
+
+                        }
+                    })
+                        .then((response) => {
+                            // window.location.href = 'http://localhost:3000/portfolio/chooseSectionEdit/<%= projectName%>'
+                            console.log("gogoaxaois");
+                            console.log(user._id);
+
+
+                        });
+                },
+
+            },
+
+
+
+
+
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

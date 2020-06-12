@@ -1,0 +1,218 @@
+<html>
+
+<head>
+    <title>
+        ADD PROJECT
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9cdefafb29.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="container navbar navbar-expand-lg navbar-light fixed-top"
+            style="background-color: rgba(255, 255, 255, 0.884);">
+            <a class="navbar-brand" href="/"><img src="images/logo.png" style="width: 100px;height: auto;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+
+
+
+
+
+    <div class="container my-5" id="app1">
+        <h1 style="text-align:  center; margin-top: 100px;"><b>ADD PROJECT</b></h1>
+        <br>
+
+
+        <% if(locals.error){ %>
+        <h1 style="text-align: center;background-color: red;margin: 100px;"><%= locals.error %></h1>
+
+        <%  } %>
+        <!-- action="addproject" -->
+
+        <div method="POST" id="form1" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">
+                    <h4>PROJECT</h4>
+                </label>
+                <input type="text" class="form-control" id="project" name="project" v-model="project">
+                {{project }}
+            </div>
+            <div class="form-group">
+                <label for="name">
+                    <h4>TAG</h4>
+                </label>
+                <input type="text" class="form-control" id="tag" name="tag" v-model="tag">
+            </div>
+
+            <div class="form-group">
+                <label for="name">
+                    <h4>LINK</h4>
+                </label>
+                <input type="text" class="form-control" id="link" name="link" v-model="link">
+            </div>
+            <div class="form-group">
+                <label for="name">
+                    <h4>PASSWORD TO ADD DATA</h4>
+                </label>
+                <input type="text" class="form-control" id="password" name="password" v-model="password">
+            </div>
+            <div class="custom-file mt-3 mb-4 form-group">
+                <input type="file" class="custom-file-input" name="picturename" id="picturename">
+                <label class="custom-file-label" for="customFile">เลือกภาพที่ต้องการอัพโหลด (เลือกได้หลายภาพ)</label>
+            </div>
+
+            <div id="fileList"></div>
+
+
+            <button type="submit" class="btn btn-dark btn-lg btn-block" form="form1" value="Submit"
+                @click="addUser()">SAVE</button>
+
+        </div>
+
+
+        <div>
+            <input v-model="newData.empName">
+            <span>เงินเดือน</span>
+            <input v-model="newData.salary">
+            <button @click="addEmp">savedata</button>
+            <ul>
+                <li v-for="emp in empGroup">
+
+                    {{emp.empName}} ได้เงินเดือน {{emp.salary}}---- {{emp}}
+
+                    <button type="button" class="close" v-on:click="deleteComment(emp)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
+    <script>
+
+        Vue.component('todo-item', {
+            template: '\
+                <li>\
+                    {{ key }} \
+                {{ title }}\
+                <button v-on:click="$emit(\'remove\')">Remove</button>\
+                </li>\
+            ',
+            props: ['title', 'id']
+        })
+
+
+        var app = new Vue({
+            el: "#app1",
+            data: {
+                newData: {
+                    empName: '',
+                    salary: 0
+                },
+                empGroup: [
+                    {
+                        empName: "สม",
+                        salary: 5000
+                    },
+                ],
+
+                newTodoText: '',
+                todos: [
+                    {
+                        id: 1,
+                        title: 'Do the dishes',
+                    },
+                ],
+                nextTodoId: 1,
+                // ----------------------------------------
+                project: " ",
+                tag: " ",
+                link: " ",
+                password: " ",
+
+
+
+            },
+            methods: {
+                addUser() {
+                    console.log(this.empGroup)
+                    this.submitting = true;
+                    axios.post('/portfolio/addproject', {
+                        project: this.project,
+                        tag: this.empGroup,
+                        link: this.link,
+                        password: this.password,
+                    }, {
+                        headers: {
+                   
+                        }
+                    })
+                        .then((response) => {
+                            console.log("gogoaxaois");
+                            
+                        });
+                },
+                addNewTodo: function () {
+                    this.todos.push({
+                        id: this.nextTodoId++,
+                        title: this.newTodoText
+                    })
+                    this.newTodoText = ''
+                },
+                addEmp: function () {
+                    this.empGroup.push({
+                        empName: this.newData.empName,
+                        salary: this.newData.salary
+                    });
+                    this.newData.empName = "";
+                    this.newData.salary = 0;
+
+                },
+                deleteComment(txt) {
+                    console.log(txt)
+                    let index = this.empGroup.indexOf(txt)
+                    this.empGroup.splice(index, 1)
+                }
+            },
+
+
+
+
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

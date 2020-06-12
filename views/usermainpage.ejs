@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <title>
+        ADD PROJECT
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9cdefafb29.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="container navbar navbar-expand-lg navbar-light fixed-top"
+            style="background-color: rgba(255, 255, 255, 0.884);">
+            <a class="navbar-brand" href="/"><img src="images/logo.png" style="width: 100px;height: auto;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+
+
+
+
+
+    <div class="container my-5">
+        <h1 style="text-align:  center; margin-top: 100px;"><b>ADD PROJECT</b></h1>
+        <br>
+
+
+        <% if(locals.error){ %>
+        <h1 style="text-align: center;background-color: red;margin: 100px;"><%= locals.error %></h1>
+        
+        <%  } %>
+
+
+        <form action="addproject" method="POST" id="form1" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">
+                    <h4>PROJECT</h4>
+                </label>
+                <input type="text" class="form-control" id="project" name="project">
+            </div>
+            <div class="form-group">
+                <label for="name">
+                    <h4>TAG</h4>
+                </label>
+                <input type="text" class="form-control" id="tag" name="tag">
+            </div>
+
+            <div class="form-group">
+                <label for="name">
+                    <h4>LINK</h4>
+                </label>
+                <input type="text" class="form-control" id="link" name="link">
+            </div>
+            <div class="form-group">
+                <label for="name">
+                    <h4>PASSWORD TO ADD DATA</h4>
+                </label>
+                <input type="text" class="form-control" id="password" name="password">
+            </div>
+            <div class="custom-file mt-3 mb-4 form-group">
+                <input type="file" class="custom-file-input" name="picturename" id="picturename">
+                <label class="custom-file-label" for="customFile">เลือกภาพที่ต้องการอัพโหลด (เลือกได้หลายภาพ)</label>
+            </div>
+
+            <div id="fileList"></div>
+
+
+            <button type="submit" class="btn btn-dark btn-lg btn-block" form="form1" value="Submit">SAVE</button>
+
+        </form>
+
+
+
+        <% if(locals.portInformation){   %>
+            <% Object.values(portInformation).forEach(function(project){ %>
+            <p><svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                    alt="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="bi-chevron-double-right b-icon bi">
+                    <g>
+                        <path fill-rule="evenodd"
+                            d="M3.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L9.293 8 3.646 2.354a.5.5 0 010-.708z"
+                            clip-rule="evenodd"></path>
+                        <path fill-rule="evenodd"
+                            d="M7.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L13.293 8 7.646 2.354a.5.5 0 010-.708z"
+                            clip-rule="evenodd"></path>
+                    </g>
+                </svg>
+                <%= project %></p>
+
+            <% }) %>
+            <%   }%>
+
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>

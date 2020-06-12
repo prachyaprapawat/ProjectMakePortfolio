@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <title>
+        ADD PROJECT
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9cdefafb29.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:3000/stylesheets/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="container navbar navbar-expand-lg navbar-light fixed-top"
+            style="background-color: rgba(255, 255, 255, 0.884);">
+            <a class="navbar-brand" href="/"><img src="http://localhost:3000/images/logo.png"
+                    style="width: 100px;height: auto;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+
+
+
+
+
+    <div id="app1">
+        <section id="page-2" style="font-size: 0.9em;">
+            <form action="http://localhost:3000/portfolio/addgoal" method="POST" id="form"
+                enctype="multipart/form-data">
+
+                <input type="text" id="goal" name="goal">
+                <input type="text" id="passion" name="passion">
+                <input type="hidden" id="projectName" name="projectName" value="<%= projectName%>">
+                <input type="hidden" id="userId" name="userId" value="<%= user._id%>">
+                <div class="custom-file mt-3 mb-4 form-group">
+
+                    <input type="file" class="custom-file-input" name="images1" id="images1" v-model="image"
+                        onchange="updateList()" multiple>
+                    <label class="custom-file-label" for="customFile">เลือกภาพที่ต้องการอัพโหลด
+                        (เลือกได้หลายภาพ)</label>
+                </div>
+
+
+                <button type="submit">Submit all</button>
+            </form>
+
+ 
+    <%= user._id%>
+    </section>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
+    <script>
+
+        var app = new Vue({
+            el: "#app1",
+            data: {
+                goalData: {
+                    passion: '',
+                    goal: "",
+
+
+                },
+            },
+            methods: {
+                addUser() {
+                    console.log(this.empGroup)
+                    this.submitting = true;
+                    axios.post('/portfolio/addgoal', {
+
+                        goalData: this.goalData,
+                        userId: "<%= user._id%>",
+                        projectName: "<%= projectName%>"
+                    }, {
+                        headers: {
+
+                        }
+                    })
+                        .then((response) => {
+                            window.location.href = 'http://localhost:3000/portfolio/chooseSectionEdit/<%= projectName%>'
+                            console.log(user._id);
+                            console.log(projectName);
+                        });
+                }
+
+            },
+
+
+
+        });
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

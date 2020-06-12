@@ -1,0 +1,92 @@
+
+        <section class="about_area section_gap container-fluid" id="addInputInformation">
+            <div class="container">
+                <h1 style="text-align: center;"><b>นายปรัชญา ประภาวัต(แปง)</b></h1>
+                <div class="row ">
+                    <div class="col-lg-6">
+                        <div class="about_img">
+                            <!-- <img class="border_circle" src="picture.jpg" alt="" style="width: 350px;height: 350px;"> -->
+                            <div class=" mt-5">
+                                <h3 class="headcolor">#INFORMATION</h3>
+                                <!-- -------------start--loop----------- -->
+                                <% if(locals.portInformation[0].addInputInformation){   %>
+                                <% Object.values(portInformation[0].addInputInformation.empGroup).forEach(function(project){ %>
+                                <p><svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                                        alt="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        class="bi-chevron-double-right b-icon bi">
+                                        <g>
+                                            <path fill-rule="evenodd"
+                                                d="M3.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L9.293 8 3.646 2.354a.5.5 0 010-.708z"
+                                                clip-rule="evenodd"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M7.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L13.293 8 7.646 2.354a.5.5 0 010-.708z"
+                                                clip-rule="evenodd"></path>
+                                        </g>
+                                    </svg>
+                                    <%= project.information%></p>
+
+                                <% }) %>
+                                <%   }%>
+                                <!-- -------------end------------- -->
+                            </div>
+                            <div class="education mt-5">
+                                <h3 class="headcolor">#EDUCATION</h3>
+
+                                <!-- -------------start--loop----------- -->
+                                <% if(locals.portInformation[0].addInputInformation){   %>
+                                <% Object.values(portInformation[0].addInputInformation.educationGroup).forEach(function(project){ %>
+                                <p><svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                                        alt="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        class="bi-chevron-double-right b-icon bi">
+                                        <g>
+                                            <path fill-rule="evenodd"
+                                                d="M3.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L9.293 8 3.646 2.354a.5.5 0 010-.708z"
+                                                clip-rule="evenodd"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M7.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L13.293 8 7.646 2.354a.5.5 0 010-.708z"
+                                                clip-rule="evenodd"></path>
+                                        </g>
+                                    </svg>
+                                    <%= project.education%></p>
+
+                                <% }) %>
+                                <%   }%>
+                                <!-- -------------end------------- -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <section>
+                            <div class="activity mt-5">
+                                <h3 class="headcolor">#ACTIVITIES</h3>
+                                <!-- -------------start--loop----------- -->
+                                <% if(locals.portInformation[0].addInputInformation){   %>
+                                <% Object.values(portInformation[0].addInputInformation.activityGroup).forEach(function(project){ %>
+                                <p><svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                                        alt="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                        class="bi-chevron-double-right b-icon bi">
+                                        <g>
+                                            <path fill-rule="evenodd"
+                                                d="M3.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L9.293 8 3.646 2.354a.5.5 0 010-.708z"
+                                                clip-rule="evenodd"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M7.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L13.293 8 7.646 2.354a.5.5 0 010-.708z"
+                                                clip-rule="evenodd"></path>
+                                        </g>
+                                    </svg>
+                                    <%= project.activity%></p>
+
+                                <% }) %>
+                                <%   }%>
+                                <!-- -------------end------------- -->
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
